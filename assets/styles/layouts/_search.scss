@@ -1,0 +1,41 @@
+.search,
+.blog {
+
+    .search-data {
+        text-align: center;
+
+        form {
+
+            label {
+                display: block;
+                width: 100%;
+                margin: auto;
+
+                @media (min-width: $screen-sm-min) {
+                    width: 50%;
+                }
+
+                @media (min-width: $screen-md-min) {
+                    width: 40%;
+                }
+
+                @media (min-width: $screen-lg-min) {
+                    width: 20%;
+                }
+
+                input[type="search"] {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+
+            }
+
+        }
+
+    }
+
+    .search-results {
+        @extend %wrapper;
+    }
+
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html {{ function('language_attributes') }}>
+
+    {% include 'templates/global/head.twig' %}
+
+    <body {{ function('body_class') }}>
+
+        {% include 'templates/global/header.twig' %}
+
+        {% include 'templates/global/hero.twig' %}
+
+        <div class="wrap container-fluid" role="document">
+            <div class="content row">
+              {% if display_sidebar %}
+                <main class="col-md-8">
+              {% endif %}
+                <main class="col-md-12">
+                    {% block content %}{% endblock %}
+                </main>
+                {% if display_sidebar %}
+                    <aside class="sidebar col-md-4">
+                        {% block sidebar %}
+                            {% include 'templates/sidebar.twig' %}
+                        {% endblock %}
+                    </aside>
+                {% endif %}
+            </div>
+        </div>
+
+        {% include 'templates/global/footer.twig' %}
+
+    </body>
+
+</html>

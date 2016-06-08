@@ -1,0 +1,63 @@
+.hero-wrapper {
+    background: url('../images/fpo-header-2560-final.jpg') no-repeat;
+    background-size: cover;
+    padding: 0;
+
+    .hero {
+        @include flex($justify-content: flex-start, $align-items: center);
+        width: 100%;
+        max-width: $site-width;
+        margin: auto;
+        padding: 20px;
+
+        @media (min-width: $screen-lg-min) {
+            padding: 20px 0;
+        }
+
+        h1 {
+            color: $white;
+            width: 100%;
+            max-width: $site-width;
+            margin: 0;
+
+            @media (min-width: $screen-sm-min) {
+                padding-right: 100px;
+                margin: 20px 0;
+            }
+
+            @media (min-width: $screen-lg-min) {
+                padding-right: 150px;
+                margin: 30px;
+            }
+
+        }
+
+        h2 {
+            color: $white;
+            margin: 30px 0;
+        }
+
+        .main-heading {
+
+            @media (min-width: $screen-sm-min) {
+                flex-basis: 40%;
+                border-right: 1px solid white;
+                padding: 30px 0;
+            }
+
+        }
+
+        .sub-heading {
+            display: none;
+
+            @media (min-width: $screen-sm-min) {
+                display: inline-block;
+                flex-basis: 60%;
+                padding-left: 40px;
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ function('home_url', '/') }}">
+                <img src="{{ site.url }}/wp-content/themes/sage/assets/images/cel-logo-600x50.png" class="my-thumb-class" alt="Image for {{post.title}}"/>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="main-nav">
+
+            <ul class="nav navbar-nav navbar-right">
+                {% for item in mainNav.get_items %}
+                    <li class="nav-main-item {{item.classes | join(' ')}}">
+                        <a class="nav-main-link" href="{{item.get_link}}">{{item.title}}</a>
+                        {% if item.get_children %}
+                            <ul class="nav-drop">
+                                {% for child in item.get_children %}
+                                    <li class="nav-drop-item">
+                                        <a href="{{child.get_link}}">{{child.title}}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                <li>
+                    <!-- Button trigger modal -->
+                    {# <button type="button" class="btn btn-primary btn-lg modal-trigger" data-toggle="modal" data-target="#myModal">
+                        Login/Register
+                    </button> #}
+
+                    {% if user %}
+                        <a class="btn btn-primary btn-lg" href="{{user.path}}" role="button">View Profile</a>
+                    {% else %}
+                        <a class="btn btn-primary btn-lg" href="{{site.url}}/wp-login.php" role="button">Login/Register</a>
+                    {% endif %}
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{ wpLoginVariable.wpLogin }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>

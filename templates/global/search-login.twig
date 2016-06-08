@@ -1,0 +1,30 @@
+<div class="search-login">
+
+    <div class="search">
+        <h2>Search Data</h2>
+        <form role="search" method="get" class="search-form" action="{{site.url}}">
+            <label>
+                <span class="screen-reader-text">Search for:</span>
+                <input type="search" class="search-field" value="" name="s" id="s" placeholder="{{ __('Search by Title, Data Set #, etc...', 'sage')|e }}">
+            </label>
+            <input type="submit" class="search-submit" value="{{ __('Search', 'sage')|e }}">
+        </form>
+    </div>
+
+    <div class="account">
+        <h2>My Account</h2>
+        {% if user %}
+            <p>
+                You are logged in as: <span class="user-full-name">{{user.first_name}} {{user.last_name}}</span>
+                <div class="account-actions">
+                    <a class="btn btn-primary" href="{{user.path}}" role="button">View Profile</a>
+                    <a class="btn btn-default" href="{{site.url}}/wp-login.php?action=logout&_wpnonce=888be8b895" role="button">Log Out</a>
+                </div>
+
+            </p>
+        {% else %}
+            {{function("cel_wp_login_form")}}
+        {% endif %}
+    </div>
+
+</div>

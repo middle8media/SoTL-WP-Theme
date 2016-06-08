@@ -1,0 +1,90 @@
+.searchandfilter {
+
+    ul {
+        @include flex($flex-direction: column, $flex-wrap: wrap);
+        padding: 0;
+
+        @media (min-width: $screen-sm-min) {
+            @include flex($flex-direction: row, $flex-wrap: wrap);
+        }
+
+        li {
+            flex: 1 0 0;
+
+            @media (min-width: $screen-sm-min) {
+                flex: 1 0 50%;
+                padding-right: 20px;
+            }
+
+            @media (min-width: $screen-md-min) {
+                flex: 1 0 25%;
+            }
+
+            &.sf-field-submit,
+            &.sf-field-reset {
+                flex: none;
+
+                @media (min-width: $screen-sm-min) {
+                    flex: 1 0 100%;
+                }
+
+            }
+
+            &.sf-field-submit {
+
+                input {
+                    @extend .btn;
+                    @extend .btn-primary;
+                }
+
+            }
+
+            &.sf-field-reset {
+
+                input {
+                    @extend .btn;
+                    @extend .btn-default;
+                }
+
+            }
+
+        }
+
+    }
+
+    label {
+        width: 100%;
+    }
+
+    select.sf-input-select {
+        min-width: 170px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .sf-field-post-meta-start_year {
+
+        @media (min-width: $screen-sm-min) {
+            flex: 0 0 41%;
+        }
+
+    }
+
+    ul.sf_date_field {
+
+        li {
+            margin-bottom: 20px;
+
+            @media (min-width: $screen-sm-min) {
+                margin: 0 20px 0 0;
+            }
+
+            label input {
+                font-weight: normal;
+            }
+
+        }
+
+    }
+
+}

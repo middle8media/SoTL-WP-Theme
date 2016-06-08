@@ -1,0 +1,11 @@
+<article {{ function('post_class') }}>
+
+    <div class="entry">
+        <h4 class="entry-title"><a href="{{ post.link }}">{{ post.title }}</a></h4>
+        <span class="entry-date">{{ post.post_date | date }}</span>
+        <p>{{ post.content | excerpt(60) }} <a href="{{ post.link }}">Read More</a></p>
+    </div>
+
+    <div class="divider divider-dark"></div>
+
+</article>

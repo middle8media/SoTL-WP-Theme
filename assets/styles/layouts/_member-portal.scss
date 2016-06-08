@@ -1,0 +1,93 @@
+.member-portal-flex-wrapper {
+    @include flex(column);
+
+    @media (min-width: $screen-md-min) {
+        @include flex(row);
+    }
+
+
+    .member-portal-list {
+        flex: 3 0 0;
+        order: 2;
+        padding-right: 40px;
+        border-right: 1px solid $black;
+        padding-bottom: 40px;
+
+        @media (min-width: $screen-md-min) {
+            order: 1;
+        }
+
+        h4 {
+            margin-bottom: 30px;
+        }
+
+        article {
+            border-bottom: 1px solid $black;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+        }
+
+        .data-deposit-meta {
+            margin-bottom: 20px;
+
+            .data-deposit-title {
+                margin-bottom: 20px;
+            }
+
+            .data-deposit-current-status {
+
+                .publish {
+                    color: $brand-success
+                }
+
+                .draft {
+                    color: $brand-info;
+                }
+
+                .pending {
+                    color: $brand-warning;
+                }
+
+                .declined {
+                    color: $brand-danger
+                }
+
+            }
+
+        }
+
+
+    }
+
+    .member-portal-side-bar {
+        flex: 1 0 0;
+        order: 1;
+        padding-left: 40px;
+
+        @media (min-width: $screen-md-min) {
+            order: 2;
+        }
+
+        .new-data-deposit,
+        .member-info,
+        .admin-contact {
+            margin-bottom: 40px;
+        }
+
+        .member-info {
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+        }
+
+    }
+
+}

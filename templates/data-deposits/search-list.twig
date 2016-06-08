@@ -1,0 +1,28 @@
+<article class="data-deposit-search-list" {{ function('post_class') }}>
+
+    <section class="data-deposit-meta">
+        {# Data Set # #}
+        <span>Data Set #: <br /><strong>{{post.data_deposit_number}}</strong></span><br />
+
+        {# Principal Investigator #}
+        {% set isPi = post.get_field('is_principal_investigator') %}
+        {% set pi = post.get_field('principal_investigator') %}
+        {% if isPi == 'Yes' and pi | length %}
+            <span>Principal Investigator: <br /><strong>{{ pi.user_firstname}} {{ pi.user_lastname}}</strong></span><br />
+        {% endif %}
+
+        {# Years #}
+        {% if post.start_year == post.end_year %}
+            <span>Year of Study: <br /><strong>{{post.start_year | date("Y") }}</strong></span><br />
+        {% else %}
+            <span>Years of Study: <br /><strong>{{post.start_year | date("Y") }} - {{post.end_year | date("Y") }}</strong></span><br />
+        {% endif %}
+    </section>
+
+    <section class="data-deposit-summary">
+        <h3><a href="{{ post.link }}">{{ post.title }}</a></h3>
+        <p>{{post.description}}</p>
+        <a class="btn btn-default" href="{{ post.link }}" role="button">View</a>
+    </section>
+
+</article>

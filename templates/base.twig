@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html {{ function('language_attributes') }}>
+
+    {% include 'templates/global/head.twig' %}
+
+    <body {{ function('body_class') }}>
+
+        {% include 'templates/global/header.twig' %}
+
+        {% include 'templates/global/hero.twig' %}
+
+        <div class="wrap container-fluid" role="document">
+            <div class="content row">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        {% include 'templates/global/footer.twig' %}
+
+    </body>
+
+</html>

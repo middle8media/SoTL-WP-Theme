@@ -1,0 +1,94 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <div class="col-md-12">
+
+        <div class="wrapper member-portal-flex-wrapper">
+
+            <div class="member-portal-list">
+                <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+
+                <h4>Data Deposits List</h4>
+
+                {% for post in posts %}
+
+                    <article>
+                        <div class="data-deposit-meta">
+                            {# Data Set Title #}
+                            {% if post.title %}
+                                <p class="data-deposit-title"><strong>{{ post.title }}</strong></p>
+                            {% else %}
+                                <p><em>This draft does not have a title</em></p>
+                            {% endif %}
+
+                            {# Data Set # #}
+                            {% if post.data_deposit_number %}
+                                <span>Data Set #: <br /><strong>{{ post.data_deposit_number }}</strong></span><br />
+                            {% endif %}
+
+                            {# Data Set Last Updated #}
+                            <span>Last Updated: <br /><strong>{{post.post_modified | date("F t, Y")}}</strong></span><br />
+
+                            {# Data Set Current Status #}
+                            <span class="data-deposit-current-status">Current Status: <br />
+                                <strong class="{{ post.post_status == 'publish' ? 'publish' : post.post_status == 'draft' ? 'draft' : post.post_status == 'pending' ? 'pending' : post.post_status == 'declined' ? 'declined' }}">{{post.post_status | capitalize | replace ({'Publish': 'Published'}) }}</strong>
+                            </span><br />
+                        </div>
+
+                        {# Data Set Description #}
+                        <p>{{ post.description }}</p>
+
+                        {% if post.post_status == 'draft' %}
+                            <div class="data-deposit-actions">
+                                <a href="{{post.edit_link}}" class="btn btn-default" role="button">Edit</a>
+                            </div>
+                        {% else %}
+                            <div class="data-deposit-actions">
+                                <a href="{{post.link}}" class="btn btn-default" role="button">View</a>
+                            </div>
+                        {% endif %}
+                    </article>
+
+                {% endfor %}
+
+                {% include "templates/global/pagination.twig" %}
+            </div>
+
+            <div class="member-portal-side-bar">
+                <div class="new-data-deposit">
+                    <h4>Deposit New Data Set</h4>
+                    <a href="/wp-admin/post-new.php?post_type=data_deposit" class="btn btn-primary" role="button">Add Deposit</a>
+                    {# <a href="/data-deposit" class="btn btn-primary" role="button">Add Deposit</a> #}
+                </div>
+
+
+                <div class="member-info">
+                    <h4>Member Information</h4>
+                    <ul>
+                        <li>First Name: <strong>{{ user.first_name }}</strong></li>
+                        <li>Last Name: <strong>{{ user.last_name }}</strong></li>
+                        <li>Email Address: <strong>{{ user.user_email }}</strong></li>
+                        <li>Affiliation: <strong>{{ user.affiliation }}</strong></li>
+                        <li>Professional Title: <strong>{{ user.title }}</strong></li>
+                    </ul>
+                    <a href="/membership" class="btn btn-default" role="button">Edit</a>
+                </div>
+
+                <div class="admin-contact">
+                    <h4>Contact</h4>
+                    <p>
+                        Have questions or comments? Contact our administrator at {{ options.admin_phone_number }}
+                        <a href="mailto:jmoore28@elon.edu?subject=feedback">{{ options.admin_email }}</a>
+                    </p>
+                </div>
+
+                <a class="btn btn-default" href="{{site.url}}/wp-login.php?action=logout&_wpnonce=888be8b895" role="button">Log Out</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

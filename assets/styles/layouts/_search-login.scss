@@ -1,0 +1,91 @@
+.search-login {
+    @include flex(column);
+    @extend %wrapper;
+
+    @media (min-width: $screen-sm-min) {
+        @include flex(row);
+    }
+
+    .search,
+    .account {
+        flex: 1 0 0;
+        text-align: center;
+    }
+
+    .search {
+        margin-bottom: 40px;
+        border-bottom: 1px solid $black;
+
+        @media (min-width: $screen-sm-min) {
+            margin-bottom: 0px;
+            border-right: 1px solid $black;
+            border-bottom: 0px;
+        }
+
+        .search-form {
+            margin-bottom: 40px;
+
+            @media (min-width: $screen-sm-min) {
+                margin-bottom: 0px;
+            }
+
+        }
+
+        label {
+            @include flex();
+
+            @media (min-width: $screen-sm-min) {
+                padding: 0 40px;
+            }
+
+            @media (min-width: $screen-md-min) {
+                padding: 0 80px;
+            }
+
+            input[type="search"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+        }
+
+    }
+
+    .account {
+
+        .user-full-name {
+            color: $brand-primary;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .account-actions {
+            @include flex($justify-content: center);
+
+            a {
+                flex: 0 0 1;
+                margin: 0 10px;
+            }
+
+        }
+
+        .account-login {
+
+            .login-username,
+            .login-password {
+
+                @media (min-width: $screen-sm-min) {
+                    padding: 0 40px;
+                }
+
+                @media (min-width: $screen-md-min) {
+                    padding: 0 80px;
+                }
+
+            }
+
+        }
+
+    }
+
+}

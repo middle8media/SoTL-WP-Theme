@@ -1,0 +1,56 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin-top: 63px;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: $body-background;
+
+    @media (min-width: $screen-xs-min) {
+        margin-top: 93px;
+    }
+
+    @media (min-width: $screen-md-min) {
+        margin-top: 112px;
+    }
+
+}
+
+.divider {
+    height: 1px;
+    width: 100%;
+    margin: 15px 0;
+
+    &.divider-light {
+        background-color: $white;
+    }
+
+    &.divider-dark {
+        background-color: $black;
+    }
+
+}
+
+.seperator {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: '';
+        pointer-events: none;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        -webkit-transform: translateX(-50%) rotate(45deg);
+        transform: translateX(-50%) rotate(45deg);
+        bottom: -25px;
+        z-index: 10;
+        background: inherit;
+    }
+
+}

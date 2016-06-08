@@ -1,0 +1,27 @@
+<article class="featured-data-deposit" {{ function('post_class') }}>
+
+    <header class="entry-header">
+        <h3 class="entry-title">{{ post.title }}</h3>
+
+        <div class="divider divider-light"></div>
+
+        <p><em>Data Set #</em> : <strong>{{ post.data_deposit_number }}</strong></p>
+        <p><em>Author</em> : <strong>{{ post.first_name }} {{ post.last_name }}</strong></p>
+        {# Years #}
+        {% if post.start_year == post.end_year %}
+            <span>Year of Study: <strong>{{post.start_year | date("Y") }}</strong></span>
+        {% else %}
+            <span>Years of Study: <strong>{{post.start_year | date("Y") }} - {{post.end_year | date("Y") }}</strong></span>
+        {% endif %}
+
+        <div class="divider divider-light"></div>
+
+        <a class="btn btn-default" href="{{ post.link }}" role="button">View</a>
+
+    </header>
+
+    <div class="entry-summary">
+        <p>{{ post.description | excerpt(40) }} <a href="{{ post.link }}">Read More</a></p>
+    </div>
+
+</article>

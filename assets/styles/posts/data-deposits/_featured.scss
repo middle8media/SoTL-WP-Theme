@@ -1,0 +1,48 @@
+.featured-data-deposit-flex-wrapper {
+    @include flex(column);
+    @extend %wrapper;
+    min-height: 450px;
+
+    @media (min-width: $screen-sm-min) {
+        @include flex(row)
+    }
+
+    .featured-data-deposit {
+        width: 100%;
+        margin-bottom: 40px;
+        border: 1px $black solid;
+
+        @media (min-width: $screen-sm-min) {
+            width: 30%;
+            margin-bottom: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        header {
+            color: $white;
+            background-color: $brand-primary;
+            padding: 15px 20px;
+
+            .entry-title {
+                color: $white;
+                margin-bottom: 15px;
+            }
+
+            [role=button] {
+                display: block;
+                width: 100px;
+                margin: auto;
+            }
+
+        }
+
+        .entry-summary {
+            padding: 20px;
+        }
+
+    }
+
+}

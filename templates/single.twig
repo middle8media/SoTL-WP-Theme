@@ -1,0 +1,22 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <div class="col-md-12 test">
+
+        {% for post in posts %}
+
+            <article {{ function('post_class') }}>
+                <header>
+                    <h1 class="entry-title">{{ post.title }}</h1>
+                </header>
+                <div class="entry-content">
+                    {{ post.content }}
+                </div>
+            </article>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

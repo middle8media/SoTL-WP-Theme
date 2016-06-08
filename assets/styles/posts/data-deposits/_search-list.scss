@@ -1,0 +1,46 @@
+article.data-deposit-search-list {
+    @include flex($flex-direction: column);
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid black;
+
+    @media (min-width: $screen-md-min) {
+        @include flex($flex-direction: row, $align-items: center);
+        margin-bottom: 70px;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    &:first-of-type {
+        margin-top: 60px;
+    }
+
+    .data-deposit-meta {
+        flex-basis: 100%;
+        order: 2;
+        margin: 0;
+
+        @media (min-width: $screen-md-min) {
+            flex-basis: 25%;
+            order: 1;
+            margin-bottom: 0;
+            padding-right: 80px;
+        }
+
+    }
+
+    .data-deposit-summary {
+        flex-basis: 100%;
+        order: 1;
+        margin-bottom: 40px;
+
+        @media (min-width: $screen-md-min) {
+            order: 2;
+            margin-bottom: 0;
+            padding-left: 40px;
+            border-left: 1px solid $black;
+        }
+
+    }
+
+}

@@ -1,0 +1,60 @@
+.footer {
+    width: 100%;
+    background-color: $brand-primary;
+
+    @media (min-width: $screen-sm-min) {
+        height: 145px;
+    }
+
+    .container {
+
+        @media (min-width: $screen-sm-min) {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 0;
+            padding: 20px 0;
+
+            @media (min-width: $screen-sm-min) {
+                padding: 35px;
+            }
+
+            li {
+                padding: 10px 0;
+
+                @media (min-width: $screen-sm-min) {
+                    display: inline;
+                    padding: 0;
+                }
+
+                a {
+                    color: $white;
+
+                    @media (min-width: $screen-sm-min) {
+                        padding: 10px 30px;
+                        border-right: 1px solid $white;
+                    }
+
+                }
+
+                &:last-child a {
+                    border-right: 0;
+                }
+
+            }
+
+        }
+
+    }
+
+    .dark-footer {
+        width: 100%;
+        height: 55px;
+        color: $white;
+        background-color: $gray-dark;
+        padding: 20px 0;
+    }
+
+}

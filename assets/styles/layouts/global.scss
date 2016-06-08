@@ -1,0 +1,41 @@
+%wrapper {
+    max-width: 1045px;
+    margin: auto;
+}
+
+.wrapper {
+    @extend %wrapper;
+}
+
+.col-md-12 {
+    padding: 40px;
+
+    &:nth-child(odd) {
+        background-color: $white;
+    }
+
+    article,
+    section {
+        @extend %wrapper;
+    }
+
+}
+
+.wrap.container {
+    flex: 1 0 auto;
+}
+
+.container {
+    margin-right: 0;
+    margin-left: 0;
+
+    @media (min-width: $screen-sm-min) {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+}
+
+.container-fluid {
+    width: 100%;
+}

@@ -1,0 +1,49 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <article class="col-md-12">
+        {% include 'templates/global/search-login.twig' %}
+    </article>
+
+    <article class="col-md-12">
+        <h2 class="center">Featured Data</h2>
+        <div class="featured-data-deposit-flex-wrapper">
+            {% for post in dataDeposits %}
+
+                {% if post.get_field('featured_data') %}
+                    {% include "templates/data-deposits/featured-data.twig" with {post: post}  %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="col-md-12">
+        <div class="recent-news-flex-wrapper">
+            <div class="recent-news-wrapper">
+                <h2>Recent News</h2>
+                <div class="recent-news">
+
+                    {% for post in news | slice(0, 3) | sort('post_date') %}
+
+                        {% include "templates/news/recent-news.twig" with {post: post}  %}
+
+                    {% endfor %}
+
+                    <a class="btn btn-default" href="" role="button">See More News</a>
+
+                </div>
+            </div>
+
+            <div class="sidebar-primary-wrapper">
+                {% block sidebar %}
+
+                    {% include "templates/home-sidebar.twig" %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </article>
+
+{% endblock %}

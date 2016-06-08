@@ -1,0 +1,74 @@
+html.wp-toolbar {
+    padding: 0;
+}
+
+.post-php .navbar-header .navbar-brand img,
+.post-new-php .navbar-header .navbar-brand img {
+    width: 416px;
+    margin-bottom: 10px
+}
+
+.post-php #wpbody,
+.post-new-php #wpbody {
+    max-width: 1045px;
+    margin: 40px auto 0;
+}
+
+.post-php  #wpcontent,
+.post-new-php  #wpcontent {
+    margin-left: 0px !important;
+}
+
+.post-php  #wpadminbar,
+.post-new-php  #wpadminbar {
+    display: none;
+    /*max-width: 1045px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    background: #F1F1F1;
+    height: 60px;*/
+}
+
+.post-php  .wp-admin #wpadminbar #wp-admin-bar-site-name .ab-item,
+.post-new-php  .wp-admin #wpadminbar #wp-admin-bar-site-name .ab-item {
+    margin: 20px 0;
+}
+
+.post-php  #wpadminbar #wp-admin-bar-my-sites a.ab-item,
+.post-new-php  #wpadminbar #wp-admin-bar-my-sites a.ab-item,
+.post-php #wpadminbar #wp-admin-bar-site-name a.ab-item,
+.post-new-php #wpadminbar #wp-admin-bar-site-name a.ab-item {
+    background: url('http://local.wordpress.dev/wp-content/uploads/2016/05/cel-logo.png') no-repeat;
+    background-size: 100%;
+    width: 300px;
+    margin: 20px;
+    text-indent: 9999px;
+}
+
+.post-php  #wpadminbar .ab-top-menu > li.hover > .ab-item,
+.post-new-php  #wpadminbar .ab-top-menu > li.hover > .ab-item,
+.post-php #wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus,
+.post-new-php #wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus,
+.post-php #wpadminbar:not(.mobile) .ab-top-menu > li:hover > .ab-item,
+.post-new-php #wpadminbar:not(.mobile) .ab-top-menu > li:hover > .ab-item,
+.post-php #wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item:focus,
+.post-new-php #wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item:focus {
+    background: #F1F1F1;
+    color: #F1F1F1;
+}
+
+.post-php  #wp-admin-bar-wp-logo,
+.post-new-php  #wp-admin-bar-wp-logo,
+.post-php  .wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item::before,
+.post-new-php  .wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item::before,
+.post-php  #wp-admin-bar-top-secondary,
+.post-new-php  #wp-admin-bar-top-secondary,
+.post-php  form#your-profile h2:first-of-type,
+.post-new-php  form#your-profile h2:first-of-type,
+.post-php  form#your-profile .form-table:first-of-type,
+.post-new-php  form#your-profile .form-table:first-of-type,
+.post-php  #wpfooter,
+.post-new-php  #wpfooter {
+    display: none;
+}

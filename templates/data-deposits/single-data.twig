@@ -1,0 +1,153 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    {% for post in posts %}
+
+        <article {{ function('post_class') }}>
+
+            <div class="col-md-12 seperator">
+                <section class="data-deposit-header">
+                    <div class="data-deposit-main">
+                        <h2 class="data-deposit-title">{{post.title}} ({{post.data_deposit_number}})</h2>
+                        <span><strong>By {{post.first_name}} {{post.last_name}}</strong></span>
+
+                        <div class="data-deposit-summary">
+                            <h4>Summary</h4>
+                            <p>{{post.description}}</p>
+                        </div>
+                    </div>
+
+                    <div class="data-deposit-info">
+                        <h4>Data Set Information</h4>
+
+                        {# Data Set # #}
+                        <span>Data Set #: <strong>{{post.data_deposit_number}}</strong></span>
+
+                        {# Principal Investigator #}
+                        {% set isPi = post.get_field('is_principal_investigator') %}
+                        {% set pi = post.get_field('principal_investigator') %}
+                        {% if isPi == 'Yes' and pi | length %}
+                            <span>Principal Investigator: <strong>{{ pi.user_firstname}} {{ pi.user_lastname}}</strong></span>
+                        {% endif %}
+
+                        {% set additionalPi = post.get_field('additional_principal_investigators') %}
+                        {# Additional PIs #}
+                        {% if isPi == 'Yes' and  additionalPi | length %}
+                            {% if additionalPi | length > 1 %}
+                                <span>Additional PIs:
+                                    {% for item in additionalPi %}
+                                        <strong>
+                                            {{item.first_name}} {{item.last_name}}{% if not loop.last %},{% endif %}
+                                        </strong>
+                                    {% endfor %}
+                                </span>
+                            {% else %}
+                                <span>Additional PI:
+                                    {% for item in additionalPi %}
+                                        <strong>
+                                            {{item.first_name}} {{item.last_name}}
+                                        </strong>
+                                    {% endfor %}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+
+                        {# Years #}
+                        {% if post.start_year == post.end_year %}
+                            <span>Year of Study: <strong>{{post.start_year | date("Y") }}</strong></span>
+                        {% else %}
+                            <span>Years of Study: <strong>{{post.start_year | date("Y") }} - {{post.end_year | date("Y") }}</strong></span>
+                        {% endif %}
+
+                        {# Location #}
+                        {% set location = post.get_field('location') %}
+                        {% if location | length %}
+                            {% if location | length > 1 %}
+                                <span>Geographic Locations:
+                                    {% for item in location %}
+                                        <strong>
+                                            {{item.city_or_state}}, {{item.country}}{% if not loop.last %};{% endif %}
+                                        </strong>
+                                    {% endfor %}
+                                </span>
+                            {% else %}
+                                <span>Geographic Location:
+                                    {% for item in location %}
+                                        <strong>
+                                            {{item.city_or_state}}, {{item.country}}
+                                        </strong>
+                                    {% endfor %}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+
+                        {# IRB Approval? #}
+                        <span>IRB or Equivalent Approval? <strong>{{post.institutional_review_approval}}</strong></span>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-12 hide-on-mobile">
+                <section class="data-deposit-download">
+                    <h4>Download Data Set</h4>
+
+                    {% for item in post.get_field('data_set') %}
+                        <div class="panel-group download-box" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading download-box-header" role="tab" id="headingOne">
+                                    <div class="header-meta">
+                                        <h3>{{ item.data_set_title }} <span class="small">{{ item.data_set_date | date("F t, Y") }}</span></h3>
+                                    </div>
+
+                                    <div class="header-actions">
+                                        <a href="" class="btn btn-default" role="button">Download All</a>
+                                    </div>
+
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="caret"></span>
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body download-box-body">
+                                        <p>{{ item.data_set_description }}</p>
+
+                                        {% for item_outer in post.get_field('data_set_files') %}
+
+                                            {% for item_inner in item_outer.data_set_file_url %}
+                                                {{ item_inner }}
+                                            {% endfor %}
+
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </section>
+            </div>
+
+            <div class="col-md-12">
+                <section class="data-deposit-footer">
+                    <div class="data-deposit-related-pubs">
+                        <h4>Related Publications</h4>
+                        <p>How do we hook into related publications?</p>
+                    </div>
+
+                    <div class="data-deposit-additional-info">
+                        {% if post.additional_information | length %}
+                            <h4>Additional Information</h4>
+                            <p>{{post.additional_information}}</p>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+
+        </article>
+
+    {% endfor %}
+
+{% endblock %}

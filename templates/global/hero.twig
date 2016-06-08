@@ -1,0 +1,74 @@
+<div class="hero-wrapper">
+
+    <header class="hero">
+
+        {% if function('is_front_page') == true %}
+            <h1>{{options.global_header_title}}</h1>
+
+        {% elseif function('is_singular', 'news') == true %}
+            <div class="main-heading">
+                <h1>News</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+
+        {% elseif function('is_singular', 'data_deposit') == true %}
+            <div class="main-heading">
+                <h1>Data Deposit</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+
+        {% elseif function('is_page', 'data-deposit') == true %}
+            <div class="main-heading">
+                <h1>New Data Deposit</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+
+        {% elseif function('is_page_template', 'membership.php') == true %}
+            <div class="main-heading">
+                <h1>Membership</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+
+        {% elseif function('is_search') == true %}
+            <div class="main-heading">
+                <h1>Search</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+
+        {% elseif function('is_author') == true %}
+            <div class="main-heading">
+                <h1>Member Portal</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+
+        {% else %}
+            <div class="main-heading">
+                <h1>{{post.title}}</h1>
+            </div>
+
+            <div class="sub-heading">
+                <h2>{{options.global_header_title}}</h2>
+            </div>
+        {% endif %}
+
+    </header>
+
+</div>

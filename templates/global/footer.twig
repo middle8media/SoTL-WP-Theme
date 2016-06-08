@@ -1,0 +1,19 @@
+<footer class="footer">
+    <div class="container">
+        <ul>
+            {% for item in footerNav.get_items %}
+                <li class="nav-main-item {{item.classes | join(' ')}}">
+                    <a class="nav-main-link" href="{{item.get_link}}">{{item.title}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="dark-footer">
+        <div class="container">
+            <p class="copyrite">© CEL {{ "now"|date("Y") }}</p>
+        </div>
+    </div>
+</footer>
+
+{{ function('wp_footer') }}

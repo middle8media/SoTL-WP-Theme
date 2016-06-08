@@ -1,0 +1,69 @@
+//Site Width
+$site-width: 1280px;
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$white:                  #fff;
+$black:                  #000;
+
+$gray-base:              #000;
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33.5%); // #555
+$gray-light:             lighten($gray-base, 46.7%); // #777
+$gray-lighter:           lighten($gray-base, 93.5%); // #eee
+
+$body-background:        #E8E9EB;
+
+$brand-primary:          #74000A;
+$brand-primary-hover:    darken(saturate(adjust-hue($brand-primary, 0.6522), 0.0000), 4.5098);
+$brand-secondary:        #b59a57;
+$brand-secondary-hover:  darken(saturate(adjust-hue(#b59a57, -0.1853), 1.0712), 6.8627);
+
+$brand-success:         #639A73;
+$brand-info:            #6C78C2;
+$brand-warning:         #CD7F34;
+$brand-danger:          #AC4153;
+
+// Basics of a navbar
+$navbar-height:                    110px;
+$navbar-border-radius:             0;
+$navbar-collapse-max-height:       340px;
+
+$navbar-default-color:             $brand-primary;
+$navbar-default-bg:                $white;
+$navbar-default-border:            darken($navbar-default-bg, 6.5%);
+
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     1024px;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+// Navbar links
+$navbar-default-link-color:                $brand-primary;
+$navbar-default-link-hover-color:          $brand-primary-hover;
+$navbar-default-link-hover-bg:             transparent;
+$navbar-default-link-active-color:         darken($navbar-default-link-color, 3.5%);
+$navbar-default-link-active-bg:            transparent;
+$navbar-default-link-disabled-color:       #ccc;
+$navbar-default-link-disabled-bg:          transparent;
+
+
+// Buttons
+$btn-default-color:              $white;
+$btn-default-bg:                 $brand-secondary;
+$btn-default-border:             #B18153;
+
+// Typography
+$font-family-sans-serif:  "Verdana Regular", Helvetica, sans-serif;
+$font-family-serif:       "Crimson Text", Georgia, serif;
+
+// Glyphicons font path
+$icon-font-path:        "../fonts/";
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;

@@ -1,0 +1,132 @@
+.member-form-wrapper {
+
+    h2 {
+        text-align: center;
+    }
+
+    .member-form {
+
+        input {
+            margin-bottom: 20px;
+        }
+
+        .gfield_label {
+            display: none !important;
+        }
+
+        .gform_body {
+            border-bottom: 1px solid  $black;
+            margin-bottom: 40px;
+        }
+
+        .gform_footer.top_label {
+            text-align: center;
+
+            .gform_button {
+                @extend .btn;
+                @extend .btn-primary;
+            }
+
+        }
+
+        .gform_fields {
+            @include flex($flex-direction: column, $flex-wrap: wrap);
+
+            @media (min-width: $screen-sm-min) {
+                @include flex($flex-direction: row, $flex-wrap: wrap);
+            }
+
+            .member-name {
+                @include flex(column);
+                width: 100%;
+
+                @media (min-width: $screen-sm-min) {
+                    @include flex(row);
+                }
+
+                .ginput_container_name {
+                    @include flex(column);
+                    width: 100%;
+
+                    @media (min-width: $screen-sm-min) {
+                        @include flex(row);
+                    }
+
+                    .name_first,
+                    .name_last {
+                        flex: 1 0 0;
+                    }
+
+                    .name_first {
+                        margin-bottom: 15px;
+
+                        @media (min-width: $screen-sm-min) {
+                            margin-bottom: 0;
+                            margin-right: 40px;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .member-email {
+                flex: 1 0 0;
+
+                @media (min-width: $screen-sm-min) {
+                    margin-right: 40px;
+                }
+
+            }
+
+            .member-affiliation {
+                flex: 1 0 0;
+            }
+
+            .member-title {
+                flex: 0 0 100%;
+
+                @media (min-width: $screen-sm-min) {
+                    width: 50%;
+                }
+
+                .ginput_container {
+
+                    @media (min-width: $screen-sm-min) {
+                        width: 48%;
+                    }
+
+                }
+
+            }
+
+            .member-terms {
+
+                .ginput_container input {
+                    float: left;
+                    width: auto;
+                    margin-right: 10px;
+                    box-shadow: none;
+                }
+
+                label {
+                    display: inline;
+                }
+
+            }
+
+        }
+
+        span.gfield_required {
+            display: none;
+        }
+
+        .name_first label,
+        .name_last label {
+            display: none;
+        }
+
+    }
+
+}

@@ -1,0 +1,8 @@
+.page .wrap.container {
+    margin-top: 20px;
+
+    @media (min-width: $screen-sm-min) {
+        margin-top: 60px;
+    }
+
+}

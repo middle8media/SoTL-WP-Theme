@@ -1,0 +1,15 @@
+.btn {
+    padding: 8px 25px;
+    border-radius: 0;
+}
+
+.navbar-default .navbar-nav>li>a[role="button"] {
+    color: $white;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $brand-primary-hover;
+    }
+
+}

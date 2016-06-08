@@ -1,0 +1,22 @@
+// custom
+.gform_wrapper .top_label input.medium {
+
+    @media (min-width: $screen-sm-min) {
+        width: 100%;
+    }
+
+}
+
+.gform_wrapper .form_saved_message {
+    border: none;
+    background-color: transparent;
+
+    span:first-child {
+        padding: 0;
+    }
+
+}
+
+h3.gform_title {
+    display: none;
+}

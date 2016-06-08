@@ -1,0 +1,34 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    {% if user %}
+        <div class="col-md-12">
+            <section class="member-form-wrapper">
+                <h2>{{ post.get_field('update_form_title') }}</h2>
+                {{function('unpack_member_update_form', post.id )}}
+            </section>
+        </div>
+    {% else %}
+        <div class="col-md-12 seperator">
+            <section>
+                <h2>{{ post.get_field('membership_about_header') }}</h2>
+                <p>{{ post.get_field('membership_about_content') }}</p>
+
+                <h2>{{ post.get_field('membership_who_header') }}</h2>
+                <p>{{ post.get_field('membership_who_content') }}</p>
+
+                <h2>{{ post.get_field('membership_benefits_header') }}</h2>
+                <p>{{ post.get_field('membership_benefits_content') }}</p>
+            </section>
+        </div>
+
+        <div class="col-md-12">
+            <section class="member-form-wrapper">
+                <h2>{{ post.get_field('request_form_title') }}</h2>
+                {{function('unpack_member_registration_form', post.id )}}
+            </section>
+        </div>
+    {% endif %}
+
+{% endblock %}

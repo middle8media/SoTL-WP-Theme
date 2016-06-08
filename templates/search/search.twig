@@ -1,0 +1,58 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <article class="col-md-12 seperator">
+
+        <div class="search-data">
+            <h2>Search Data</h2>
+            <form role="search" method="get" class="search-form" action="{{site.url}}">
+                <label>
+                    <span class="screen-reader-text">Search for:</span>
+                    <input type="search" class="search-field" value="" name="s" id="s" placeholder="{{ __('Search by Title, Data Set #, etc...', 'sage')|e }}">
+                </label>
+                <input type="submit" class="search-submit" value="{{ __('Search', 'sage')|e }}">
+            </form>
+        </div>
+
+    </article>
+
+    <article class="col-md-12">
+
+        <div class="search-results">
+            <h2>Search Results</h2>
+
+            {# {{dump(posts)}} #}
+
+            {% if posts | length == 1 %}
+                <p>
+                    {{ posts | length }} result was found for the search for <strong class="brand-color">{{ request.get.s }}</strong>
+                </p>
+            {% elseif posts | length > 1 %}
+                <p>
+                    {{ posts | length }} results were found for the search for <strong>{{ request.get.s }}</strong>
+                </p>
+            {% else %}
+                {{ __('Sorry, no results were found.', 'sage') }}
+            {% endif %}
+
+            {% if posts | length %}
+                <div class="divider divider-dark"></div>
+                {% filter shortcodes %}
+                    [searchandfilter id="415"]
+                {% endfilter %}
+                <div class="divider divider-dark"></div>
+            {% endif %}
+
+            {% for post in posts %}
+
+                {% include "templates/data-deposits/search-list.twig" with {post: post}  %}
+
+            {% endfor %}
+
+            {% include "templates/global/pagination.twig" %}
+        </div>
+
+    </article>
+
+{% endblock %}
