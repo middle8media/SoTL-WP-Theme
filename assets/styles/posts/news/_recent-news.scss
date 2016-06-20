@@ -57,7 +57,7 @@
         }
 
         .social-icons {
-            @include flex(row, flex-start);
+            @include flex($flex-direction: row, $justify-content: flex-start);
             list-style: none;
             padding: 0;
 

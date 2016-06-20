@@ -5,8 +5,8 @@
 
         <div class="divider divider-light"></div>
 
-        <p><em>Data Set #</em> : <strong>{{ post.data_deposit_number }}</strong></p>
-        <p><em>Author</em> : <strong>{{ post.first_name }} {{ post.last_name }}</strong></p>
+        <p>Data Set # : <strong>{{ post.data_deposit_number }}</strong></p>
+        <p>Author : <strong>{{ post.first_name }} {{ post.last_name }}</strong></p>
         {# Years #}
         {% if post.start_year == post.end_year %}
             <span>Year of Study: <strong>{{post.start_year | date("Y") }}</strong></span>

@@ -3,6 +3,10 @@
     border-radius: 0;
 }
 
+.btn-primary:hover {
+    background-color: $brand-primary-hover;
+}
+
 .navbar-default .navbar-nav>li>a[role="button"] {
     color: $white;
 
