@@ -59,6 +59,22 @@ show_admin_bar( false );
 // }
 // add_action('admin_menu', 'cel_remove_admin_menu_items');
 
+// REMOVE Subgroup and Keyword POST META BOXES for Author role
+function cel_remove_my_post_metaboxes() {
+    $user = wp_get_current_user();
+    if ( in_array( 'author', (array) $user->roles ) ) {
+        remove_meta_box( 'tagsdiv-subgroups','data_deposit','normal' ); // Subgroups/Categories Metabox
+        remove_meta_box( 'tagsdiv-keywords','data_deposit','normal' ); // Keywords/Tags Metabox
+    }
+}
+add_action('admin_menu','cel_remove_my_post_metaboxes');
+
+// Removes Screen Options Tab from everyone except Admin
+function cel_remove_screen_options_tab() {
+    return current_user_can( 'manage_options' );
+}
+add_filter('screen_options_show_screen', 'cel_remove_screen_options_tab');
+
 // This adds a new user to the "Pending" group upon submission of membership registration form.
 add_action('user_register', 'cel_user_register' );
 

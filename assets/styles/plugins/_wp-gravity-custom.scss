@@ -20,3 +20,9 @@
 h3.gform_title {
     display: none;
 }
+
+.gform_wrapper .gform_footer input.button,
+.gform_wrapper .gform_footer input[type=submit] {
+    @extend .btn;
+    @extend .btn-default;
+}
