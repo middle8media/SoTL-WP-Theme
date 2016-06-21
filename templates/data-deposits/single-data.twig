@@ -117,8 +117,8 @@
                                             {% for item_inner in item.data_set_files %}
                                                 <div class="data-set-file">
                                                     <p>{{ item_inner.data_set_file['filename'] }}</p>
-                                                    <a href="{{ item_inner.data_set_file_url }}">{{ item_inner.data_set_file_url }}</a>
-                                                    <a href="{{ item_inner.data_set_file['url'] }}" class="btn btn-default file-download" role="button">Download</a>
+                                                    <a href="{{ item_inner.data_set_file_url }}" target="_blank">{{ item_inner.data_set_file_url }}</a>
+                                                    <a href="{{ item_inner.data_set_file['url'] }}" class="btn btn-default file-download" role="button" target="_blank">Download</a>
                                                 </div>
                                             {% endfor %}
                                         </div>
@@ -135,7 +135,7 @@
                                                         {% elseif item_inner.audio_or_video == 'Video' %}
                                                             <img src="{{ site.url }}/wp-content/themes/sage/assets/images/video.png" alt="" class="media-format-icon" />
                                                         {% endif %}
-                                                        <a href="{{ item_inner.data_set_media_file['url'] }}">{{ item_inner.data_set_media_file['filename'] }}</a>
+                                                        <a href="{{ item_inner.data_set_media_file['url'] }}" target="_blank">{{ item_inner.data_set_media_file['filename'] }}</a>
                                                     </div>
 
                                                 </div>
