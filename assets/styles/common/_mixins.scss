@@ -4,8 +4,16 @@
     display: -ms-flex;
     display: -o-flex;
     display: flex;
+
+    -webkit-flex-direction: $flex-direction;
     flex-direction: $flex-direction;
+
+    -webkit-flex-wrap: $flex-wrap;
     flex-wrap: $flex-wrap;
+
+    -webkit-justify-content: $justify-content;
     justify-content: $justify-content;
+
+    -webkit-align-items: $align-items;
     align-items: $align-items;
 }

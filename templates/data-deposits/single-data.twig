@@ -92,33 +92,55 @@
                 <section class="data-deposit-download">
                     <h4>Download Data Set</h4>
 
-                    {% for item in post.get_field('data_set') %}
-                        <div class="panel-group download-box" id="accordion" role="tablist" aria-multiselectable="true">
+                    {% for item in post.get_field('data_set') | reverse %}
+                        <div class="panel-group download-box" role="tablist" aria-multiselectable="true">
 
                             <div class="panel panel-default">
-                                <div class="panel-heading download-box-header" role="tab" id="headingOne">
+                                <div class="panel-heading download-box-header" role="tab" id="heading{{ loop.index }}">
                                     <div class="header-meta">
                                         <h3>{{ item.data_set_title }} <span class="small">{{ item.data_set_date | date("F t, Y") }}</span></h3>
                                     </div>
 
-                                    <div class="header-actions">
+                                    {# <div class="header-actions">
+                                        {% set item_inner = item.data_set_files %}
                                         <a href="" class="btn btn-default" role="button">Download All</a>
-                                    </div>
+                                    </div> #}
 
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="caret"></span>
+                                    <a class="accordion-toggle {{ loop.first ? '' : 'collapsed' }}" role="button" data-toggle="collapse" data-parent="false" href="#collapse{{ loop.index }}" aria-controls="collapse{{ loop.index }}">
                                     </a>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapse{{ loop.index }}" class="panel-collapse collapse {{ loop.first ? 'in' : '' }}" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
                                     <div class="panel-body download-box-body">
-                                        <p>{{ item.data_set_description }}</p>
+                                        {{ item.data_set_description }}
 
-                                        {% for item_outer in post.get_field('data_set_files') %}
-
-                                            {% for item_inner in item_outer.data_set_file_url %}
-                                                {{ item_inner }}
+                                        <div class="data-set-files-wrapper">
+                                            {% for item_inner in item.data_set_files %}
+                                                <div class="data-set-file">
+                                                    <p>{{ item_inner.data_set_file['filename'] }}</p>
+                                                    <a href="{{ item_inner.data_set_file_url }}">{{ item_inner.data_set_file_url }}</a>
+                                                    <a href="{{ item_inner.data_set_file['url'] }}" class="btn btn-default file-download" role="button">Download</a>
+                                                </div>
                                             {% endfor %}
+                                        </div>
 
-                                        {% endfor %}
+                                        <div class="data-set-media-files-wrapper">
+                                            {% for item_inner in item.data_set_media_files %}
+                                                <div class="data-set-media-file">
+                                                    <strong>{{ item_inner.media_file_title }}</strong>
+                                                    <p>{{ item_inner.media_file_description }}</p>
+
+                                                    <div class="media-file">
+                                                        {% if item_inner.audio_or_video == 'Audio' %}
+                                                            <img src="{{ site.url }}/wp-content/themes/sage/assets/images/audio.png" alt="" class="media-format-icon" />
+                                                        {% elseif item_inner.audio_or_video == 'Video' %}
+                                                            <img src="{{ site.url }}/wp-content/themes/sage/assets/images/video.png" alt="" class="media-format-icon" />
+                                                        {% endif %}
+                                                        <a href="{{ item_inner.data_set_media_file['url'] }}">{{ item_inner.data_set_media_file['filename'] }}</a>
+                                                    </div>
+
+                                                </div>
+                                            {% endfor %}
+                                        </div>
 
                                     </div>
                                 </div>
