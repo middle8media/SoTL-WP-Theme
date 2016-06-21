@@ -1,0 +1,20 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <article class="col-md-12">
+
+        <div class="search-data">
+            <h2>Search Data</h2>
+            <form role="search" method="get" class="search-form" action="{{site.url}}">
+                <label>
+                    <span class="screen-reader-text">Search for:</span>
+                    <input type="search" class="search-field" value="" name="s" id="s" placeholder="{{ __('Search by Title, Data Set #, etc...', 'sage')|e }}">
+                </label>
+                <input type="submit" class="search-submit" value="{{ __('Search', 'sage')|e }}">
+            </form>
+        </div>
+
+    </article>
+
+{% endblock %}

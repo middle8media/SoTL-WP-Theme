@@ -4,7 +4,7 @@
 
         {% if function('is_front_page') == true %}
             <h1>{{options.global_header_title}}</h1>
-            
+
         {% elseif function('is_singular', 'news') == true %}
             <div class="main-heading">
                 <h1>News</h1>
@@ -41,7 +41,7 @@
                 <h2>{{options.global_header_title}}</h2>
             </div>
 
-        {% elseif function('is_search') == true %}
+        {% elseif function('is_search') or function('is_page_template', 'page-search.php') == true %}
             <div class="main-heading">
                 <h1>Search</h1>
             </div>
