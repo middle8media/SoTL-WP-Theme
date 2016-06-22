@@ -115,10 +115,17 @@
 
                                         <div class="data-set-files-wrapper">
                                             {% for item_inner in item.data_set_files %}
-                                                <div class="data-set-file">
-                                                    <p>{{ item_inner.data_set_file['filename'] }}</p>
-                                                    <a href="{{ item_inner.data_set_file_url }}" target="_blank">{{ item_inner.data_set_file_url }}</a>
-                                                    <a href="{{ item_inner.data_set_file['url'] }}" class="btn btn-default file-download" role="button" target="_blank">Download</a>
+                                                <div class="data-set-files">
+
+                                                    <div class="data-set-file-meta">
+                                                        <p class="data-set-file-name">{{ item_inner.data_set_file['filename'] }}</p>
+                                                        <a href="{{ item_inner.data_set_file_url }}" target="_blank" class="data-set-file-url">{{ item_inner.data_set_file_url }}</a>
+                                                    </div>
+
+                                                    <div class="data-set-file-download">
+                                                        <a href="{{ item_inner.data_set_file['url'] }}" class="btn btn-default file-download" role="button" target="_blank">Download</a>
+                                                    </div>
+
                                                 </div>
                                             {% endfor %}
                                         </div>

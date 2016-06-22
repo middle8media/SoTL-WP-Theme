@@ -49,6 +49,7 @@
     .data-deposit-download {
 
         .download-box {
+            margin-bottom: 40px;
 
             .download-box-header {
                 @include flex(row, $align-items: center)
@@ -100,14 +101,13 @@
                     padding: 30px 50px;
                 }
 
-
                 .data-set-files-wrapper {
-                    @include flex(column);
-                    margin: 40px 0;
+                    @include flex($flex-direction: column, $justify-content: flex-start);
+                    margin: 60px 0;
                     border-bottom: 1px solid $black;
 
                     @media (min-width: $screen-sm-min) {
-                        @include flex($flex-direction: row, $justify-content: flex-start);
+                        // @include flex($flex-direction: row, $justify-content: flex-start);
                     }
 
 
@@ -116,13 +116,38 @@
                         margin-bottom: 10px;
                     }
 
-                    .data-set-file {
-                        @include flex($flex-direction: column, $justify-content: flex-start, $align-items: flex-start);
-                        margin-bottom: 40px;
+                    .data-set-files {
+                        @include flex($flex-direction: column, $justify-content: flex-start);
+                        margin-bottom: 30px;
 
                         @media (min-width: $screen-sm-min) {
-                            margin-right: 40px;
+                            @include flex($flex-direction: row, $justify-content: flex-start, $align-items: center);
                         }
+
+                    }
+
+                    .data-set-file-meta {
+                        @include flex($flex-direction: column, $justify-content: flex-start, $align-items: flex-start);
+                        margin-bottom: 20px;
+
+                        @media (min-width: $screen-sm-min) {
+                            margin: 0 40px 0 0;
+                        }
+
+                        .data-set-file-name {
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+
+                        .data-set-file-name,
+                        .data-set-file-url {
+                            width: 200px;
+                            word-wrap: break-word;
+                        }
+
+                    }
+
+                    .data-set-file-download {
 
                         .file-download {
                             margin-top: auto;
@@ -134,7 +159,7 @@
 
                 .data-set-media-files-wrapper {
                     @include flex($flex-direction: column, $justify-content: flex-start);
-                    margin: 40px 0 0 0;
+                    margin: 60px 0 0 0;
 
                     a,
                     p {
@@ -171,8 +196,12 @@
                             @include flex($align-items: center);
 
                             .media-format-icon {
-                                width: 50px;
-                                margin-right: 15px;
+                                width: 35px;
+                                margin-right: 10px;
+                            }
+
+                            a {
+                                margin-bottom: 0;
                             }
 
                         }
