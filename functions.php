@@ -206,10 +206,10 @@ add_filter('embed_oembed_html', 'cel_custom_class_to_wordpress_iframe_video', 99
 
 // Redircts users to home page after LogicException/* redirect users to front page after login */
 function cel_redirect_to_front_page() {
-global $redirect_to;
-if (!isset($_GET['redirect_to'])) {
-$redirect_to = get_option('siteurl');
-}
+    global $redirect_to;
+    if (!isset($_GET['redirect_to'])) {
+    $redirect_to = get_option('siteurl');
+    }
 }
 add_action('login_form', 'cel_redirect_to_front_page');
 
@@ -259,7 +259,7 @@ function cel_wp_login_form( $args = array() ) {
                 <input type="hidden" name="redirect_to" value="' . esc_url( $args['redirect'] ) . '" />
             </p>
             <p>
-            <a href="/wp-login.php?action=lostpassword">Forgot Password?</a> or <a href="/wp-login.php?action=register">Don\'t Have an Account</a>
+            <a href="/wp-login.php?action=lostpassword">Forgot Password?</a> or <a href="/membership">Don\'t Have an Account?</a>
             </p>
         </form>';
 
@@ -267,6 +267,11 @@ function cel_wp_login_form( $args = array() ) {
         echo $form;
     else
         return $form;
+}
+
+add_filter( 'register_url', 'my_register_page' );
+function my_register_page( $register_url ) {
+    return home_url( '/membership' );
 }
 
 // custom login page styles
