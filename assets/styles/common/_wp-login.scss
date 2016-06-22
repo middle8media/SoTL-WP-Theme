@@ -28,6 +28,19 @@ body {
             box-shadow: none;
         }
 
+        input#wp-submit {
+            @extend .btn;
+            @extend .btn-primary;
+        }
+
+        .button.button-large {
+            height: auto;
+        }
+
+        .button-primary {
+            box-shadow: none;
+            text-shadow: none;
+        }
     }
 
 }
