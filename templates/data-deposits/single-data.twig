@@ -161,10 +161,27 @@
 
             <div class="col-md-12">
                 <section class="data-deposit-footer">
-                    <div class="data-deposit-related-pubs">
-                        <h4>Related Publications</h4>
-                        <p>How do we hook into related publications?</p>
-                    </div>
+
+                    {% if post.has_related_publications == 'Yes' %}
+                        <div class="data-deposit-related-pubs">
+                            <h4>Related Publications</h4>
+                            {% for item in post.get_field('publications') %}
+                                <ul>
+                                    <li>
+                                        {% if item.publication_url | length %}
+                                            <a href="{{item.publication_url}}" target="_blank">{{ item.publication_title }}</a>
+                                        {% else %}
+                                            {{ item.publication_title }}
+                                        {% endif %}
+
+                                        {% if item.publication_file | length %}
+                                            | <a href="{{item.publication_file['url'] }}" target="_blank">View File</a>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
                     <div class="data-deposit-additional-info">
                         {% if post.additional_information | length %}

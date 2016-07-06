@@ -110,10 +110,24 @@ function cel_append_post_status_list(){
     global $post;
     $complete = '';
     $label = '';
-    if($post->post_type == 'post'){
-        if($post->post_status == 'declined'){
-            $complete = ' selected="selected"';
-            $label = '<span id="post-status-display"> Declined</span>';
+    if($post->post_type == 'data_deposit'){
+        if ( get_post_status () == 'declined' ) {
+            echo "
+            <script>
+                jQuery(document).ready( function() {
+                     jQuery('.misc-pub-section label').after(\"<span id='post-status-display'> Declined</span>\");
+                     jQuery('select#post_status').append('<option value=\"declined\" selected=\"selected\">Declined</option>');
+                });
+            </script>
+            ";
+        } else {
+            echo "
+            <script>
+                jQuery(document).ready( function() {
+                     jQuery('select#post_status').append('<option value=\"declined\">Declined</option>');
+                });
+            </script>
+            ";
         }
      }
 }
