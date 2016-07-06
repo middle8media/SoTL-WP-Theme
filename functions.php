@@ -59,10 +59,10 @@ show_admin_bar( false );
 // }
 // add_action('admin_menu', 'cel_remove_admin_menu_items');
 
-// REMOVE Subgroup and Keyword POST META BOXES for Author role
+// REMOVE Subgroup and Keyword POST META BOXES for contributor role
 function cel_remove_my_post_metaboxes() {
     $user = wp_get_current_user();
-    if ( in_array( 'author', (array) $user->roles ) ) {
+    if ( in_array( 'contributor', (array) $user->roles ) ) {
         remove_meta_box( 'tagsdiv-subgroups','data_deposit','normal' ); // Subgroups/Categories Metabox
         remove_meta_box( 'tagsdiv-keywords','data_deposit','normal' ); // Keywords/Tags Metabox
     }
@@ -159,16 +159,6 @@ function cel_timber_context( $context ) {
     return $context;
 }
 add_filter( 'timber_context', 'cel_timber_context'  );
-
-// Hide Subgroup taxonomy from Member
-// if (is_admin()) :
-// function cel_remove_custom_taxonomy() {
-//     if( !current_user_can('manage_options') ) {
-// 	       remove_meta_box('tagsdiv-', subgroups, data_deposit, 'side' );
-//     }
-// }
-// add_action( 'admin_menu', 'cel_remove_custom_taxonomy' );
-// endif;
 
 // Adds a custom WYSIWYG toolbar to AF
 function cel_custom_acf_toolbars( $toolbars ) {
@@ -356,6 +346,54 @@ function cel_modify_profile_fields($profile_fields) {
 }
 add_filter('user_contactmethods', 'cel_modify_profile_fields');
 
+function cel_search_filter($query) {
+    if ( !is_admin() && $query->is_main_query() ) {
+
+        if ($query->is_search) {
+            $query->set(
+                'post_type', array( 'data_deposit'),
+                'post_status', 'publish'
+            );
+        }
+    }
+}
+
+add_action('pre_get_posts','cel_search_filter');
+
+function cel_custom_author_archive( &$query ) {
+    if ($query->is_author) {
+        $query->set( 'post_type', 'data_deposit' );
+        $query->set( 'post_status', array('publish', 'draft', 'pending', 'declined' ) );
+        $query->set( 'posts_per_page', 3 );
+    }
+}
+add_action( 'pre_get_posts', 'cel_custom_author_archive' );
+
+
+function cel_news_archive( &$query ) {
+    if ($query->is_post_type_archive('news')) {
+        $query->set( 'post_type', 'news' );
+        $query->set( 'post_status', 'publish' );
+        $query->set( 'posts_per_page', 3 );
+    }
+}
+add_action( 'pre_get_posts', 'cel_news_archive' );
+
+
+// function cel_change_publish_button( $translation, $text ) {
+//
+//     if ( $text == 'Publish' )
+//
+//     if(!current_user_can('administrator')) {
+//         return 'Submit for Review';
+//     } else {
+//         return 'Publish';
+//     }
+//
+//     return $translation;
+// }
+//
+// add_filter( 'gettext', 'cel_change_publish_button', 10, 2 );
 
 
 
@@ -450,26 +488,3 @@ add_filter('user_contactmethods', 'cel_modify_profile_fields');
 // add_action( 'pre_get_posts', 'cel_my_home_query' );
 
 // query_posts for data_deposit custom post type
-function cel_search_filter($query) {
-    if ( !is_admin() && $query->is_main_query() ) {
-
-        if ($query->is_search) {
-            $query->set(
-                'post_type', array( 'data_deposit'),
-                'post_status', 'publish'
-            );
-        }
-    }
-}
-
-add_action('pre_get_posts','cel_search_filter');
-
-
-function cel_custom_author_archive( &$query ) {
-    if ($query->is_author) {
-        $query->set( 'post_type', 'data_deposit' );
-        $query->set( 'post_status', array('publish', 'draft', 'pending', 'declined' ) );
-        $query->set( 'posts_per_page', 3 );
-    }
-}
-add_action( 'pre_get_posts', 'cel_custom_author_archive' );
