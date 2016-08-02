@@ -21,8 +21,8 @@
                     <div class="data-deposit-info">
                         <h4>Data Set Information</h4>
 
-                        {# Data Set # #}
-                        <span>Data Set #: <strong>{{post.data_deposit_number}}</strong></span>
+                        {# Data Deposit # #}
+                        <span>Data Deposit #: <strong>{{ post.id }}</strong></span>
 
                         {# Principal Investigator #}
                         {% set isPi = post.get_field('is_principal_investigator') %}

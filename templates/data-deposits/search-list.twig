@@ -1,8 +1,8 @@
 <article class="data-deposit-search-list" {{ function('post_class') }}>
 
     <section class="data-deposit-meta">
-        {# Data Set # #}
-        <span>Data Set #: <br /><strong>{{post.data_deposit_number}}</strong></span><br />
+        {# Data Deposit # #}
+        <span>Data Deposit #: <br /><strong>{{ post.id }}</strong></span><br />
 
         {# Principal Investigator #}
         {% set isPi = post.get_field('is_principal_investigator') %}
